@@ -1,34 +1,22 @@
-import 'dart:io';
-
+mport 'dart:io';
 void main() {
-  List<MapEntry<String, dynamic>> employees = [];
-
-  
-  int numEmployees;
-  stdout.write("Enter the number of employees: ");
-  numEmployees = int.parse(stdin.readLineSync()!);
-
-  for (int i = 0; i < numEmployees; i++) {
-    stdout.write("Enter id of employee $i: ");
-    int  id =int.parse( stdin.readLineSync()!);
-    stdout.write("Enter name of employee $i: ");
+  List<Map<String, dynamic>> emplDetails = [];
+  for (int i = 1; i <= 3; i++) {
+    stdout.write("Enter the Employee ID : ");
+    int id = int.parse(stdin.readLineSync()!);
+    stdout.write("Enter the Employee Name : ");
     String name = stdin.readLineSync()!;
-    stdout.write("Enter age of employee $i: ");
+    stdout.write("Enter the Employee Salary : ");
+    int salary = int.parse(stdin.readLineSync()!);
+    stdout.write("Enter the Employee Age : ");
     int age = int.parse(stdin.readLineSync()!);
-    stdout.write("Enter salary of employee $i + 1}: ");
-    double salary = double.parse(stdin.readLineSync()!);
-
-    employees.add(MapEntry<String, dynamic>('Employee ${i + 1}', {
-      'id' : id,
-      'name': name,
-      'age': age,
-      'salary': salary,
-    }));
+    emplDetails.add({'Id': id, 'Name': name, 'Salary': salary, 'Age': age});
   }
-
- 
-  print("\nTotal Employee Information:");
-  for (var entry in employees) {
-    print("${entry.key}: ${entry.value}");
-  }
+  print("Here is the List of Employees ");
+  emplDetails.forEach((empl) {
+    empl.forEach((key, value) {
+      print("$key : $value");
+    });
+    print("");
+  });
 }
