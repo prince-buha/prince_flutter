@@ -1,23 +1,30 @@
+/*
+  write a dart program to print all negative elements in an array.
+*/
+
 import 'dart:io';
 
 void main() {
-  List<int> allNumbers = [];
-
-  print("Enter numbers : ");
-  String input;
-
-  do {
-    input = stdin.readLineSync()!;
-    if (input != 'exit') {
-      int number = int.parse(input);
-      allNumbers.add(number);
-    }
-  } while (input != 'exit');
-
-  print('\nNegative Elements in the Array:');
-  for (int i = 0; i < allNumbers.length; i++) {
-    if (allNumbers[i] < 0) {
-      print(allNumbers[i]);
-    }
+  var array = [];
+  List myArray = array.toList();
+  stdout.write("Enter elements do you want in your Array : ");
+  int l = int.parse(stdin.readLineSync()!);
+  int i = 1;
+  while (i <= l) {
+    stdout.write("Enter element $i value of Array : ");
+    int e = int.parse(stdin.readLineSync()!);
+    myArray.add(e);
+    i++;
   }
+  print("Elements in the Array are : ");
+  myArray.forEach((element) {
+    stdout.write("$element   ");
+  });
+  print("");
+  print("Negative Elements in the Array are : ");
+  myArray.forEach((element) {
+    if (element < 0) {
+      stdout.write("$element   ");
+    }
+  });
 }
