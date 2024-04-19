@@ -5,8 +5,8 @@
 import 'dart:io';
 
 void main() {
-  var array = [];
-  List myArray = array.toList();
+  
+  List myArray = array[].toList();
   stdout.write("Enter elements do you want in your Array : ");
   int l = int.parse(stdin.readLineSync()!);
   int i = 1;
