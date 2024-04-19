@@ -8,8 +8,7 @@ an array using menu -driven programing approach
 import 'dart:io';
 
 void main() {
-  var array = [1, 2, 3, 4];
-  List myArray = array.toList();
+  List myArray = array[1, 2, 3, 4].toList();
   int choice;
 
   do {
