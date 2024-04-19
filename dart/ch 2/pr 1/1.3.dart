@@ -1,66 +1,60 @@
+/*
+write a dart program to insert,update,delete, and view opration  on the elements in 
+an array using menu -driven programing approach
+*/
+
+
+
 import 'dart:io';
 
 void main() {
-  List<String> food = ['Dhosa', 'Idli', 'Bhajipau', 'Pizza'];
+  var array = [1, 2, 3, 4];
+  List myArray = array.toList();
+  int choice;
 
-  while (true) {
-    print("$food\n");
-    print("Menu:");
-    print("press for 1. Add Food");
-    print("press for 2. Update Food");
-    print("press for 3. Delete Food");
-    print("press for 4. View Foods");
-    print("press for 5. Exit");
-
-    stdout.write("Enter your choice: ");
-    int choice = int.parse(stdin.readLineSync()!);
-    print("\n");
+  do {
+    
+    print("press 1 to add  element   ");
+    print("press 2  Update  element   ");
+    print("press 3 to Remove  element  ");
+    print("press 4 to View  elements   ");
+    print("press 0 to Exit ");
+    stdout.write("Enter Your Choice : ");
+    choice = int.parse(stdin.readLineSync()!);
 
     switch (choice) {
       case 1:
-        stdout.write("Enter the food to add: ");
-        String newFood = stdin.readLineSync()!;
-        food.add(newFood);
-        print("$newFood added.");
+        stdout.write("add Element  : ");
+        int addVar = int.parse(stdin.readLineSync()!);
+        myArray.add(addVar);
+        print(myArray);
         break;
-
       case 2:
-        stdout.write("Enter the index of the food to update: ");
+        stdout.write(" Update  Elements: ");
         int index = int.parse(stdin.readLineSync()!);
-        if (index >= 0 && index < food.length) {
-          stdout.write("Enter the updated food: ");
-          String updatedFood = stdin.readLineSync()!;
-          food[index] = updatedFood;
-          print("Food updated.");
-        } else {
-          print("Invalid index.");
-        }
+        print("");
+        stdout.write("Enter the Element  : ");
+        int newElements = int.parse(stdin.readLineSync()!);
+        myArray[index] = newElements;
+        print(myArray);
         break;
-
       case 3:
-        stdout.write("Enter the index of the food to delete: ");
-        int deleteIndex = int.parse(stdin.readLineSync()!);
-        if (deleteIndex >= 0 && deleteIndex < food.length) {
-          String deletedFood = food.removeAt(deleteIndex);
-          print("$deletedFood deleted.");
-        } else {
-          print("Invalid index.");
-        }
+        stdout.write(" Remove Elements : ");
+        int removeVar = int.parse(stdin.readLineSync()!);
+        myArray.remove(removeVar);
+        print(myArray);
         break;
-
       case 4:
-        print("Food List:");
-        for (int i = 0; i < food.length; i++) {
-          print("Food $i: ${food[i]}");
-        }
+        stdout.write(" Viewing Elements  : ");
+        myArray.forEach((element) {
+          stdout.write("$element  ");
+        });
         break;
-
-      case 5:
-        print("Exiting the program.");
-        return;
-
+      case 0:
+        print("Exiting...");
+        break;
       default:
-        print("Invalid choice. Please select a valid option.");
+        print("Invalid Choice!!");
     }
-  }
+  } while (choice != 0);
 }
