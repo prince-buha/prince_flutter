@@ -1,80 +1,112 @@
+
+/*
+
+  write a dart program to fing below menthioed opration  
+*/
 import 'dart:io';
 
 void main() {
-  String choice;
-  List<List<int>> arr = [
-    [11, 22, 33],
-    [44, 55, 66],
-    [77, 88, 99]
+  List<List<int>> a = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
   ];
+  int choice;
 
- do {
+  print("\n----:Array a:----\n");
+  for (var i = 0; i < 3; i++) {
+    for (var j = 0; j < 3; j++) {
+      stdout.write('Enter element of a[$i][$j] : ');
+      int val = int.parse(stdin.readLineSync()!);
+      a[i][j] = val;
+    }
+  }
 
-  print("$arr\n");
-  print("1. Sum of all elements");
-  print("2. Sum of a specific row");
-  print("3. Sum of a specific column");
-  print("4. Sum of diagonal elements");
-  print("5. Sum of anti-diagonal elements");
-  print("0. Exit");
+  do {
+    print("\n1. Sum of all elements");
+    print("2. Sum of specific row");
+    print("3. Sum of specific column");
+    print("4. Sum of diagonal elements");
+    print("5. Sum of antidiagonal elements");
+    print("0. Exit");
     stdout.write("Enter your choice: ");
-     choice = stdin.readLineSync()!;
-    
+    choice = int.parse(stdin.readLineSync()!);
 
     switch (choice) {
-      case "1":
-        int sum = 0;
-        for (int i = 0; i < arr.length; i++) {
-          for (int j = 0; j < arr[i].length; j++) {
-            sum = sum + arr[i][j];
+      case 1:
+        choice = 0;
+        for (var i = 0; i < 3; i++) {
+          for (var j = 0; j < 3; j++) choice += a[i][j];
+        }
+
+        print("\n");
+        print("Sum of all elements : ${choice++}");
+        print("");
+        break;
+
+      case 2:
+        choice = 0;
+        stdout.write("\nEnter row : ");
+        int r = int.parse(stdin.readLineSync()!);
+
+        for (var i = 0; i < 3; i++) {
+          for (var j = 0; j < 3; j++) {
+            if (i == r) choice += a[i][j];
           }
         }
-        print("Sum of all elements: $sum\n");
+
+        print("\n");
+        print("Sum of $r row : ${choice++}");
+        print("");
         break;
 
-      case "2":
-        stdout.write("Enter row number : ");
-        int row = int.parse(stdin.readLineSync()!);
-        int sum = 0;
-        for (int j = 0; j < arr[row - 1].length; j++) {
-          sum = sum + arr[row - 1][j];
+      case 3:
+        choice = 0;
+        stdout.write("\nEnter row : ");
+  int x = int.parse(stdin.readLineSync()!);
+        for (var i = 0; i < 3; i++) {
+          for (var j = 0; j < 3; j++) {
+            if (j == x) choice += a[i][j];
+          }
         }
-        print("Sum of row $row: $sum\n");
+
+        print("\n");
+        print("Sum of $x colloum : ${choice++}");
+        print("");
         break;
 
-      case "3":
-        stdout.write("Enter column number : ");
-        int col = int.parse(stdin.readLineSync()!);
-        int sum = 0;
-        for (int i = 0; i < arr.length; i++) {
-          sum = sum + arr[i][col - 1];
+      case 4:
+        choice = 0;
+        for (var i = 0; i < 3; i++) {
+          for (var j = 0; j < 3; j++) {
+            if (i == j) choice += a[i][j];
+          }
         }
-        print("Sum of column $col: $sum\n");
+        print("\n");
+        print("Sum of diagonal element : ${choice++}");
+        print("");
         break;
 
-      case "4":
-        int sum = 0;
-        for (int i = 0; i < arr.length; i++) {
-          sum = sum + arr[i][i];
+      case 5:
+        choice = 0;
+        for (var i = 0; i < 3; i++) {
+          for (var j = 0; j < 3; j++) {
+            if (i + j == a.length - 1) choice += a[i][j];
+          }
         }
-        print("Sum of diagonal elements: $sum\n");
+
+        print("\n");
+        print("Sum of antidiagonal element : ${choice++}");
+        print("");
         break;
 
-      case "5":
-        int sum = 0;
-        for (int i = 0; i < arr.length; i++) {
-          sum = sum + arr[i][arr.length - i - 1];
-        }
-        print("Sum of anti-diagonal elements: $sum\n");
-        break;
-
-      case "0":
+      case 0:
+        print("\n\nExit !!");
         break;
 
       default:
-        print("Invalid choice\n");
+        print("\n\nInvalid input !!");
         break;
     }
-  }
-while(choice != 0 );
+  } while (choice != 0);
 }
